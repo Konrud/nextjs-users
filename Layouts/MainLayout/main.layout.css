@@ -1,0 +1,19 @@
+.c-layout__nav {
+    background-color: rgb(114, 139, 153);
+}
+
+.c-layout__menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.c-layout__menu-item {
+    padding: 0.15rem 1rem;
+    margin-right: 0.3rem;
+}
+
+.c-layout__menu-item:hover {
+    background:rgb(147, 186, 209);
+}
