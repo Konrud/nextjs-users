@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MainLayout from "../../Layouts/MainLayout/main.layout";
+import { _getUsers } from "../api/getusers";
 
 function Users({ users }) {
     debugger;
@@ -23,8 +24,8 @@ function Users({ users }) {
 
 export async function getStaticProps(context) {
     try {
-        const response = await fetch(`${process.env.appBaseURL}/api/getusers`);
-        const users = await response.json();
+        const response = await _getUsers();/* await fetch(`${process.env.appBaseURL}/api/getusers`); */
+        const users = response;/* await response.json(); */
         debugger;
         return {
             props: {

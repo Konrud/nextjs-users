@@ -23,7 +23,7 @@ function UserPage({ user = {} }) {
 export async function getStaticPaths() {
     try {
         const response = await _getUsers();/*await fetch(`${process.env.appBaseURL}/api/getusers`);*/
-        const users = await response.json();
+        const users = response;/* await response.json(); */
         debugger;
         let paths = ["/users/1"];
 
@@ -49,7 +49,7 @@ export async function getStaticProps(context) {
     try {
         debugger;
         const response = await _getUser(); /* await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`); */
-        const user = await response.json();
+        const user = response;/* await response.json(); */
         debugger;
         if (user) {
             return {
