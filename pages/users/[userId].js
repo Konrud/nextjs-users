@@ -48,7 +48,7 @@ export async function getStaticProps(context) {
     const { params: { userId } } = context;
     try {
         debugger;
-        const response = await _getUser(); /* await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`); */
+        const response = await _getUser(userId); /* await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`); */
         const user = response;/* await response.json(); */
         debugger;
         if (user) {
