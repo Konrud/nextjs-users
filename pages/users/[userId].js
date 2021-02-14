@@ -1,4 +1,6 @@
 import MainLayout from "../../Layouts/MainLayout/main.layout";
+import { _getUsers, _getUser } from "../api/getusers";
+
 
 function UserPage({ user = {} }) {
     return (
@@ -20,7 +22,7 @@ function UserPage({ user = {} }) {
 
 export async function getStaticPaths() {
     try {
-        const response = await fetch(`${process.env.appBaseURL}/api/getusers`);
+        const response = await _getUsers();/*await fetch(`${process.env.appBaseURL}/api/getusers`);*/
         const users = await response.json();
         debugger;
         let paths = ["/users/1"];
@@ -46,7 +48,7 @@ export async function getStaticProps(context) {
     const { params: { userId } } = context;
     try {
         debugger;
-        const response = await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`);
+        const response = await _getUser(); /* await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`); */
         const user = await response.json();
         debugger;
         if (user) {

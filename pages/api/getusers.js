@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-async function _getUsers() {
+export async function _getUsers() {
   try {
     const response = await fetch(`${process.env.baseGetUsersAPIURL}`);
     const users = await response.json();
@@ -9,6 +9,22 @@ async function _getUsers() {
 
   } catch (e) {
     debugger;
+  }
+}
+
+export async function _getUser(userID) {
+  debugger;
+  try {
+    const response = await fetch(`${process.env.baseGetUsersAPIURL}/${userID}`);
+    const user = await response.json();
+    debugger;
+    if (!user) {
+      return { hasError: true, error: `user could not be found ${JSON.stringify(user)}` };
+    }
+    return user;
+  } catch (e) {
+    debugger;
+    return { hasError: true, error: `exception: ${JSON.stringify(e)}` };
   }
 }
 
