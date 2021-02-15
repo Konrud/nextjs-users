@@ -1,5 +1,6 @@
 import MainLayout from "../../Layouts/MainLayout/main.layout";
 import { _getUsers, _getUser } from "../api/getusers";
+import { isEmptyObject } from "../../utilities";
 
 
 function UserPage({ user = {} }) {
@@ -51,16 +52,17 @@ export async function getStaticProps(context) {
         const response = await _getUser(userId); /* await fetch(`${process.env.appBaseURL}/api/getuser/${userId}`); */
         const user = response;/* await response.json(); */
         debugger;
-        if (user) {
+        if (isEmptyObject(user)) {
             return {
-                props: {
-                    user
-                }
+                notFound: true
             }
         }
+        debugger;
 
         return {
-            notFound: true
+            props: {
+                user
+            }
         }
 
     } catch (e) {
